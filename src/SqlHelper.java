@@ -46,10 +46,10 @@ public class SqlHelper {
         Connection c = null;
         Statement stmt = null;
         ResultSet rs = null;
-        String strTemp = "";
+        String strTemp = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:library");
+            c = DriverManager.getConnection("jdbc:sqlite:library.sqlite");
             c.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
@@ -57,6 +57,7 @@ public class SqlHelper {
             rs = stmt.executeQuery(query);
             ResultSetMetaData metaData = rs.getMetaData();
             if (rs.next()) {
+                strTemp = "";
                 for (int i = 1; i <= metaData.getColumnCount(); i++) {
                     strTemp += rs.getObject(i) + "&";
                 }
@@ -86,7 +87,7 @@ public class SqlHelper {
         Statement stmt = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:library");
+            c = DriverManager.getConnection("jdbc:sqlite:library.sqlite");
             c.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
@@ -112,7 +113,7 @@ public class SqlHelper {
         Statement stmt = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:library");
+            c = DriverManager.getConnection("jdbc:sqlite:library.sqlite");
             c.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
@@ -133,8 +134,4 @@ public class SqlHelper {
         }
         System.out.println("Operation done successfully");
     }
-}
-
-interface ResultSetConsumer<T> {
-    public T consume(ResultSet rs);
 }

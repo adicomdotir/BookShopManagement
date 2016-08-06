@@ -8,14 +8,13 @@
  *
  * @author adicom
  */
-public class InsertBookFrame extends javax.swing.JFrame {
+public class EditBookFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form InsertBookFrame
+     * Creates new form EditBookFrame
      */
-    public InsertBookFrame() {
+    public EditBookFrame() {
         initComponents();
-
     }
 
     /**
@@ -48,6 +47,13 @@ public class InsertBookFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("حذف و ویرایش");
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(java.awt.Color.lightGray, 1, true));
 
@@ -150,7 +156,8 @@ public class InsertBookFrame extends javax.swing.JFrame {
 
         jPanel2.setBorder(new javax.swing.border.LineBorder(java.awt.Color.lightGray, 1, true));
 
-        jButton1.setText("جدید");
+        jButton1.setText("ویرایش");
+        jButton1.setEnabled(false);
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
@@ -164,7 +171,8 @@ public class InsertBookFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("ذخیره");
+        jButton3.setText("حذف");
+        jButton3.setEnabled(false);
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton3MouseClicked(evt);
@@ -195,6 +203,41 @@ public class InsertBookFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel3.setBorder(new javax.swing.border.LineBorder(java.awt.Color.lightGray, 1, true));
+
+        jLabel9.setText("ISBN");
+
+        jButton4.setText("نمایش");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel9)
+                .addGap(46, 46, 46))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(jButton4))
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -203,13 +246,16 @@ public class InsertBookFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -220,6 +266,20 @@ public class InsertBookFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        //UPDATE table_name
+        //SET column1=value1,column2=value2,...
+        //WHERE some_column=some_value;
+        String query = "UPDATE book "
+                + "SET "
+                + "name='"+ jTextField1.getText()  +"',"
+                + "writer='"+ jTextField2.getText()  +"',"
+                + "genre='"+ jComboBox1.getSelectedItem()  +"',"
+                + "pub='"+ jTextField5.getText()  +"',"
+                + "tirazh='"+ jTextField6.getText()  +"',"
+                + "year='"+ jTextField7.getText()  +"',"
+                + "chap='"+ jTextField8.getText()  +"'"
+                + " WHERE isbn=" + Integer.parseInt(jTextField4.getText());
+        SqlHelper.update(query);
         jTextField1.setText("");
         jTextField2.setText("");
         jTextField3.setText("");
@@ -227,26 +287,45 @@ public class InsertBookFrame extends javax.swing.JFrame {
         jTextField6.setText("");
         jTextField7.setText("");
         jTextField8.setText("");
+        jButton1.setEnabled(false);
+        jButton3.setEnabled(false);
     }//GEN-LAST:event_jButton1MouseClicked
-
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        String query = "INSERT INTO book VALUES("
-                + "'"+ Integer.parseInt(jTextField3.getText())  +"',"
-                + "'"+ jTextField1.getText()  +"',"
-                + "'"+ jTextField2.getText()  +"',"
-                + "'"+ jComboBox1.getSelectedItem()  +"',"
-                + "'"+ jTextField5.getText()  +"',"
-                + "'"+ jTextField6.getText()  +"',"
-                + "'"+ jTextField7.getText()  +"',"
-                + "'"+ jTextField8.getText()  +"'"
-                + ");";
-        SqlHelper.insert(query);
-        jButton1MouseClicked(evt);
-    }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         this.setVisible(false);
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        String query = "DELETE FROM book WHERE isbn=" + Integer.parseInt(jTextField4.getText());
+        SqlHelper.delete(query);
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField5.setText("");
+        jTextField6.setText("");
+        jTextField7.setText("");
+        jTextField8.setText("");
+        jButton1.setEnabled(false);
+        jButton3.setEnabled(false);
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        String query = "SELECT * FROM book WHERE isbn=" + Integer.parseInt(jTextField4.getText());
+        String res = SqlHelper.select(query);
+        if (res != null) {
+            String[] arr = res.split("&");
+            jTextField1.setText(arr[1]);
+            jTextField2.setText(arr[2]);
+            jTextField3.setText(arr[0]);
+            jComboBox1.setSelectedItem(arr[3]);
+            jTextField5.setText(arr[4]);
+            jTextField6.setText(arr[5]);
+            jTextField7.setText(arr[6]);
+            jTextField8.setText(arr[7]);
+            jButton1.setEnabled(true);
+            jButton3.setEnabled(true);
+        }
+    }//GEN-LAST:event_jButton4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -265,20 +344,20 @@ public class InsertBookFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InsertBookFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditBookFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InsertBookFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditBookFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InsertBookFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditBookFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InsertBookFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditBookFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InsertBookFrame().setVisible(true);
+                new EditBookFrame().setVisible(true);
             }
         });
     }
@@ -287,6 +366,7 @@ public class InsertBookFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -296,11 +376,14 @@ public class InsertBookFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
