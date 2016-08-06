@@ -20,7 +20,7 @@ public class SqlHelper {
         Statement stmt = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:library");
+            c = DriverManager.getConnection("jdbc:sqlite:library.sqlite");
             c.setAutoCommit(false);
             System.out.println("Opened database successfully");
 

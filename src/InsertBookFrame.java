@@ -160,6 +160,11 @@ public class InsertBookFrame extends javax.swing.JFrame {
         });
 
         jButton2.setText("برگشت");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         jButton3.setText("ذخیره");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -228,17 +233,22 @@ public class InsertBookFrame extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         String query = "INSERT INTO book VALUES("
-                + "'"+ jTextField1.getText()  +"'"
-                + "'"+ jTextField2.getText()  +"'"
-                + "'"+ jTextField3.getText()  +"'"
-                + "'"+ jComboBox1.getSelectedItem()  +"'"
-                + "'"+ jTextField5.getText()  +"'"
-                + "'"+ jTextField6.getText()  +"'"
-                + "'"+ jTextField7.getText()  +"'"
+                + "'"+ Integer.parseInt(jTextField3.getText())  +"',"
+                + "'"+ jTextField1.getText()  +"',"
+                + "'"+ jTextField2.getText()  +"',"
+                + "'"+ jComboBox1.getSelectedItem()  +"',"
+                + "'"+ jTextField5.getText()  +"',"
+                + "'"+ jTextField6.getText()  +"',"
+                + "'"+ jTextField7.getText()  +"',"
                 + "'"+ jTextField8.getText()  +"'"
                 + ");";
         SqlHelper.insert(query);
+        jButton1MouseClicked(evt);
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments
