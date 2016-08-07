@@ -44,6 +44,28 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x645;&#x634;&#x62a;&#x631;&#x6cc;"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x62b;&#x628;&#x62a; &#x645;&#x634;&#x62a;&#x631;&#x6cc;"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x648;&#x6cc;&#x631;&#x627;&#x6cc;&#x634; &#x645;&#x634;&#x62a;&#x631;&#x6cc;"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x62d;&#x630;&#x641; &#x645;&#x634;&#x62a;&#x631;&#x6cc;"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x644;&#x6cc;&#x633;&#x62a; &#x645;&#x634;&#x62a;&#x631;&#x6cc; &#x647;&#x627;"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu3">
           <Properties>
